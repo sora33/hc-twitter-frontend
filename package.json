@@ -3,18 +3,26 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "http://sora33.github.io/hc_twitter_react_frontend",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "yarn vite build --mode production",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.7.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@types/axios": "^0.14.0",
+    "@types/axios-case-converter": "^0.4.0",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.4.0",
+    "axios-case-converter": "^1.1.0",
     "framer-motion": "^10.12.18",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.1",

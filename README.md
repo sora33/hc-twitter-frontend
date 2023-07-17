@@ -1,3 +1,9 @@
+## デプロイ方法
+yarn deploy
+
+##　確認できるURL
+https://sora33.github.io/hc_twitter_react_frontend/
+
 
 ## プロダクトの立ち上げ
 yarn create vite
