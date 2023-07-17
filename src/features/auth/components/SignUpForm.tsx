@@ -15,6 +15,7 @@ export const SignUpForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<SignUpParams>();
 
@@ -34,6 +35,7 @@ export const SignUpForm: React.FC = () => {
       setIsLoading(false);
     }
   };
+  const passwordWatch = watch("password");
 
   return (
     <Stack as="form" spacing="4" w="100%" onSubmit={handleSubmit(onSubmit)}>
@@ -54,14 +56,25 @@ export const SignUpForm: React.FC = () => {
         error={errors.email?.message}
       />
       <FormInput
+        type="password"
         label="パスワード"
-        register={register("password", { required: "必須項目です" })}
+        register={register("password", {
+          required: "必須項目です",
+          minLength: { value: 6, message: "6文字以上で入力してください" },
+          pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+            message: "英数字を混ぜてください",
+          },
+        })}
         error={errors.password?.message}
       />
       <FormInput
+        type="password"
         label="パスワード（確認）"
         register={register("passwordConfirmation", {
           required: "必須項目です",
+          validate: (value) =>
+            value === passwordWatch || "パスワードが一致していません",
         })}
         error={errors.passwordConfirmation?.message}
       />
