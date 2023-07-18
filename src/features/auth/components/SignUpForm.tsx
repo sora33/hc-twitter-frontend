@@ -67,7 +67,8 @@ export const SignUpForm: React.FC = () => {
           required: "必須項目です",
           minLength: { value: 6, message: "6文字以上で入力してください" },
           pattern: {
-            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+            value:
+              /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{6,}$/,
             message: "英数字を混ぜてください",
           },
         })}
