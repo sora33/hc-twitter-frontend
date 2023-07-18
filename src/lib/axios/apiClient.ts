@@ -12,3 +12,13 @@ export const apiClient = applyCaseMiddleware(
   }),
   options
 );
+
+export interface ErrorRes {
+  response?: {
+    data?: {
+      errors?: {
+        fullMessages?: string[];
+      };
+    };
+  };
+}

@@ -31,15 +31,16 @@ export const SignUpForm: React.FC = () => {
       });
       navigate("/auth/signIn");
     } catch (error) {
+      const errorMessage = String(error);
       toastMessage({
-        title: "アカウントの作成に失敗しました",
+        title: `${errorMessage}`,
         status: "error",
       });
-      console.error(error);
     } finally {
       setIsLoading(false);
     }
   };
+
   const passwordWatch = watch("password");
 
   return (
