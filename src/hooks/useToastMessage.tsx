@@ -1,26 +1,21 @@
 import { useCallback } from "react";
-import { useToast } from "@chakra-ui/react";
+import { useToast, ToastProps } from "@chakra-ui/react";
 
-type Props = {
-  title: string;
-  status?: "info" | "warning" | "success" | "error";
-};
-type ToastMessage = {
-  toastMessage: (props: Props) => void;
+type ToastMessageProps = {
+  toastMessage: (props: ToastProps) => void;
 };
 
-export const useToastMessage = (): ToastMessage => {
+export const useToastMessage = (): ToastMessageProps => {
   const toast = useToast();
 
   const toastMessage = useCallback(
-    (props: Props) => {
-      const { title, status = "success" } = props;
+    (props: ToastProps) => {
       toast({
-        title,
-        status,
-        position: "top",
+        status: "success",
         duration: 3000,
+        position: "top",
         isClosable: true,
+        ...props,
       });
     },
     [toast]
