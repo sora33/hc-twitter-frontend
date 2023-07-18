@@ -23,7 +23,12 @@ export const SignUpForm: React.FC = () => {
     try {
       setIsLoading(true);
       await signUp(form);
-      toastMessage({ title: "アカウントを作成しました", status: "success" });
+      toastMessage({
+        title: "アカウントの仮登録ができました",
+        description:
+          "確認メールを送信していますので、そちらでアカウント本登録をお願いします。",
+        duration: 9000,
+      });
       navigate("/auth/signIn");
     } catch (error) {
       toastMessage({
