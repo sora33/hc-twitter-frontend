@@ -1,10 +1,10 @@
-import { Text } from "@chakra-ui/react"
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "pages/Router";
 
 export const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Text>テキストテキスト</Text>
+    <BrowserRouter basename="/hc_twitter_react_frontend">
+      <Router />
     </BrowserRouter>
-  )
-}
+  );
+};
