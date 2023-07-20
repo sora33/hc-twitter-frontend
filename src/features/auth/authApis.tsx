@@ -25,9 +25,16 @@ export const signUp = async (params: SignUpParams) => {
 export const signIn = async (params: SignInParams) => {
   try {
     const res = await apiClient.post("users/sign_in", params);
-    localStorage.setItem("access-token", res.headers["access-token"] as string);
-    localStorage.setItem("client", res.headers["client"] as string);
-    localStorage.setItem("uid", res.headers["uid"] as string);
+    if (
+      typeof res.headers["access-token"] !== "string" ||
+      typeof res.headers["client"] !== "string" ||
+      typeof res.headers["uid"] !== "string"
+    ) {
+      throw new Error("ヘッダー情報が正しくありません");
+    }
+    localStorage.setItem("access-token", res.headers["access-token"]);
+    localStorage.setItem("client", res.headers["client"]);
+    localStorage.setItem("uid", res.headers["uid"]);
     return res;
   } catch (error) {
     console.log(error);
@@ -54,12 +61,8 @@ export const getCurrentUser = async (): Promise<{ data: User }> => {
     !localStorage.getItem("client") ||
     !localStorage.getItem("uid")
   ) {
-    throw new Error("ログインしていません");
+    throw new Error("認証情報がありません");
   }
-
-  const res = await apiClient.get("/users/sessions");
-  console.log(localStorage.getItem("access-token"));
-  console.log(localStorage.getItem("client"));
-  console.log(localStorage.getItem("uid"));
-  return res;
+  const res = await apiClient.get<{ data: User }>("/users/validate_token");
+  return res.data;
 };
