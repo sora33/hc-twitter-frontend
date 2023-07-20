@@ -13,6 +13,15 @@ export const apiClient = applyCaseMiddleware(
   options
 );
 
+// token付与等のリクエスト処理の共通化
+apiClient.interceptors.request.use((config) => {
+  config.headers["access-token"] = localStorage.getItem("access-token") ?? "";
+  config.headers.client = localStorage.getItem("client") ?? "";
+  config.headers.uid = localStorage.getItem("uid") ?? "";
+
+  return config;
+});
+
 export interface ErrorRes {
   response?: {
     data?: {
