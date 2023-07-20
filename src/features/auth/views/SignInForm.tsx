@@ -18,9 +18,7 @@ export const SignInForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInParams>({
-    defaultValues: { email: "shuuuya0616@gmail.com", password: "asdf4535" },
-  });
+  } = useForm<SignInParams>({});
 
   const onSubmit: SubmitHandler<SignInParams> = async (form) => {
     try {
