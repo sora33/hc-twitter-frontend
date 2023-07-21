@@ -1,5 +1,5 @@
 import { HeadingH1 } from "components/heading/HeadingH1";
-import { SignUpForm } from "features/auth/components/SignUpForm";
+import { SignUpForm } from "features/auth/views/SignUpForm";
 export const SignUp: React.FC = () => {
   return (
     <>
