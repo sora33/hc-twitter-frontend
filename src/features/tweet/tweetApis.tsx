@@ -13,7 +13,8 @@ export const postTweet = async (params: TweetParams) => {
     } else {
       const tweetId = res.data.id;
       const formData = new FormData();
-      formData.append("tweet_id", tweetId.toString());
+      formData.append("imageable_type", "tweet");
+      formData.append("imageable_id", tweetId.toString());
       formData.append("image", image[0], image[0].name);
       const resImg = await apiClient.post(`images`, formData, {
         headers: {
