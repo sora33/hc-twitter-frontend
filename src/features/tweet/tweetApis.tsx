@@ -7,7 +7,8 @@ export const postTweet = async (params: TweetParams) => {
   const { content, image } = params;
   try {
     const res = await apiClient.post<Tweet>("tweets", { content });
-    if (!image) {
+    console.log(image);
+    if (!image || image.length === 0) {
       return res;
     } else {
       const tweetId = res.data.id;
