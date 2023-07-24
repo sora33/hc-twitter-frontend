@@ -1,9 +1,9 @@
-import { HeadingH1 } from "components/heading/HeadingH1";
+import { PostTweetForm } from "features/tweet/views/PostTweetForm";
 
 export const Home: React.FC = () => {
   return (
     <>
-      <HeadingH1>ホームページ（ログイン後のみ）</HeadingH1>
+      <PostTweetForm />
     </>
   );
 };

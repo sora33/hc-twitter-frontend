@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { AuthLayout } from "pages/auth/AuthLayout";
 import { Layout } from "pages/Layout";
 import { useAuth } from "features/auth/useAuth";
@@ -7,6 +8,7 @@ import { SignUp } from "pages/auth/SignUp";
 import { SignIn } from "pages/auth/SignIn";
 import { Home } from "pages/Home";
 import { PrivateRouter } from "components/router/PrivateRouter";
+import { Page404 } from "pages/Page404";
 
 export const Router: React.FC = () => {
   const { handleGetCurrentUser, isSignedIn } = useAuth();
@@ -17,6 +19,7 @@ export const Router: React.FC = () => {
   return (
     <>
       <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="auth" element={<AuthLayout />}>
           <Route path="signUp" element={<SignUp />} />
           <Route path="signIn" element={<SignIn />} />
@@ -30,6 +33,10 @@ export const Router: React.FC = () => {
           }
         >
           <Route path="home" element={<Home />} />
+        </Route>
+
+        <Route element={<Layout />}>
+          <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
     </>

@@ -1,19 +1,16 @@
-import { Box, Container, VStack } from "@chakra-ui/react";
-import { MainButton } from "components/button/MainButton";
+import { Container, VStack } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
+import { Header } from "components/layout/Header";
 
 export const AuthLayout: React.FC = () => {
   return (
     <>
-      <Box as="main" bg="white">
-        <Container>
-          <MainButton link="/auth/SignIn">ログイン</MainButton>
-          <MainButton link="/auth/SignUp">アカウント新規登録</MainButton>
-          <VStack spacing={4} mt="12">
-            <Outlet />
-          </VStack>
-        </Container>
-      </Box>
+      <Header />
+      <Container>
+        <VStack as="main" spacing={4} mt="12">
+          <Outlet />
+        </VStack>
+      </Container>
     </>
   );
 };
