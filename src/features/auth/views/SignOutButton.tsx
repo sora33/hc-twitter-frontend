@@ -26,7 +26,7 @@ export const SignOutButton: React.FC = () => {
   };
 
   return (
-    <MainButton variant="solid" isLoading={isLoading} onClick={handleClick}>
+    <MainButton isLoading={isLoading} onClick={handleClick} colorScheme="gray">
       ログアウト
     </MainButton>
   );
