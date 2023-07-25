@@ -7,7 +7,7 @@ type HeadingH1Props = HeadingProps & {
 export const HeadingH1: React.FC<HeadingH1Props> = ({ children }) => {
   return (
     <>
-      <Heading as="h1" size="lg">
+      <Heading as="h1" size="md">
         {children}
       </Heading>
     </>

@@ -8,11 +8,19 @@ export const Layout: React.FC = () => {
     <>
       <Header />
       <Container maxW="container.md">
-        <Flex mt="12">
+        <Flex mt="4">
           <Sidebar />
-          <VStack as="main" spacing={4} flex="1">
+          <Stack
+            as="main"
+            spacing={4}
+            flex="1"
+            px="4"
+            mx="4"
+            borderX="1px solid"
+            borderColor="gray.200"
+          >
             <Outlet />
-          </VStack>
+          </Stack>
         </Flex>
       </Container>
     </>

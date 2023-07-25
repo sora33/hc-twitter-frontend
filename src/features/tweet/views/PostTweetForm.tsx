@@ -87,7 +87,13 @@ export const PostTweetForm: React.FC = () => {
         </Box>
       )}
 
-      <Flex justifyContent="space-between">
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        pb="2"
+        borderBottom="1px solid"
+        borderColor="gray.200"
+      >
         <Box>
           <FormInput
             type="file"
@@ -95,8 +101,9 @@ export const PostTweetForm: React.FC = () => {
               <Icon
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 as={AiFillPicture}
-                w={6}
-                h={6}
+                mt="2"
+                w={7}
+                h={7}
                 color="blue.500"
                 cursor="pointer"
               />

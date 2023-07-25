@@ -14,7 +14,7 @@ export const Sidebar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <Stack as="nav" spacing={4} w="250px" pr="8">
+    <Stack as="nav" spacing={4} w="250px">
       {SidebarList.map((item) => (
         <MainButton
           link={item.link}
