@@ -1,4 +1,4 @@
-import { Stack } from "@chakra-ui/react";
+import { Stack, Box } from "@chakra-ui/react";
 import { MainButton } from "components/button/MainButton";
 import { useLocation } from "react-router-dom";
 import {
@@ -43,19 +43,21 @@ export const Sidebar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <Stack as="nav" spacing={4} w="180px">
-      {SidebarList.map((item) => (
-        <MainButton
-          link={item.link}
-          justifyContent="start"
-          colorScheme="gray"
-          variant={location.pathname === item.link ? "solid" : "ghost"}
-          key={item.name}
-          leftIcon={item.icon}
-        >
-          {item.name}
-        </MainButton>
-      ))}
-    </Stack>
+    <Box as="nav">
+      <Stack spacing={4} w="180px" position="sticky" top="14">
+        {SidebarList.map((item) => (
+          <MainButton
+            link={item.link}
+            justifyContent="start"
+            colorScheme="gray"
+            variant={location.pathname === item.link ? "solid" : "ghost"}
+            key={item.name}
+            leftIcon={item.icon}
+          >
+            {item.name}
+          </MainButton>
+        ))}
+      </Stack>
+    </Box>
   );
 };
