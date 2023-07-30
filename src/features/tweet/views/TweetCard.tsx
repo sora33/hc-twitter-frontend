@@ -1,21 +1,8 @@
-import {
-  Box,
-  Button,
-  Flex,
-  HStack,
-  Stack,
-  Text,
-  Image,
-  Icon,
-} from "@chakra-ui/react";
+import { Flex, HStack, Stack, Text, Image } from "@chakra-ui/react";
 import { MainAvatar } from "components/avatar/MainAvatar";
+import { BooleanLink } from "components/link/BooleanLink";
 import { Tweet } from "features/tweet/tweetTypes";
-import {
-  AiOutlineHeart,
-  AiOutlineRetweet,
-  AiOutlineMessage,
-} from "react-icons/ai";
-import { Link as RouterLink } from "react-router-dom";
+import { TweetCardButton } from "features/tweet/views/TweetCardButton";
 
 type TweetCardProps = Tweet & {
   isTweetDetail?: boolean;
@@ -37,7 +24,7 @@ export const TweetCard: React.FC<TweetCardProps> = ({
   }
 
   return (
-    <RouterLink to={`/tweets/${tweet.id}`}>
+    <BooleanLink isLink={isTweetDetail} link={`/tweets/${tweet.id}`}>
       <Flex
         borderBottom="1px solid"
         borderColor="gray.200"
@@ -66,36 +53,12 @@ export const TweetCard: React.FC<TweetCardProps> = ({
             />
           )}
           <HStack justifyContent="space-between" maxW="240px">
-            <Button
-              leftIcon={<AiOutlineMessage />}
-              size="sm"
-              variant="ghost"
-              colorScheme="gray"
-              color="gray.400"
-            >
-              12
-            </Button>
-            <Button
-              leftIcon={<AiOutlineHeart />}
-              size="sm"
-              variant="ghost"
-              colorScheme="pink"
-              color="gray.400"
-            >
-              12
-            </Button>
-            <Button
-              leftIcon={<AiOutlineRetweet />}
-              size="sm"
-              variant="ghost"
-              colorScheme="green"
-              color="gray.400"
-            >
-              12
-            </Button>
+            <TweetCardButton type="good">12</TweetCardButton>
+            <TweetCardButton type="comment">12</TweetCardButton>
+            <TweetCardButton type="retweet">12</TweetCardButton>
           </HStack>
         </Stack>
       </Flex>
-    </RouterLink>
+    </BooleanLink>
   );
 };
