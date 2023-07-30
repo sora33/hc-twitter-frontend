@@ -78,7 +78,14 @@ export const PostTweetForm: React.FC = () => {
         />
         {previewUrl && (
           <Box position="relative">
-            <Image src={previewUrl} alt="preview" rounded="2xl" />
+            <Image
+              src={previewUrl}
+              alt="preview"
+              h="300px"
+              w="100%"
+              rounded="2xl"
+              objectFit="cover"
+            />
             <Icon
               onClick={onRemoveImage}
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

@@ -44,7 +44,13 @@ export const TweetCard: React.FC<Tweet> = (tweet) => {
           {tweet.content}
         </Text>
         {image && (
-          <Image src={image} h="300px" rounded="2xl" objectFit="cover" />
+          <Image
+            src={image}
+            h="300px"
+            w="100%"
+            rounded="2xl"
+            objectFit="cover"
+          />
         )}
         <HStack justifyContent="space-between" maxW="240px">
           <Button
