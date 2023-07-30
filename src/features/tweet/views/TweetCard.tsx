@@ -15,8 +15,15 @@ import {
   AiOutlineRetweet,
   AiOutlineMessage,
 } from "react-icons/ai";
+import { Link as RouterLink } from "react-router-dom";
 
-export const TweetCard: React.FC<Tweet> = (tweet) => {
+type TweetCardProps = Tweet & {
+  isTweetDetail?: boolean;
+};
+export const TweetCard: React.FC<TweetCardProps> = ({
+  isTweetDetail = false,
+  ...tweet
+}) => {
   const image = typeof tweet.image === "string" ? tweet.image : null;
 
   function formatDate(isoDateString: Date, locale = "ja-JP") {
@@ -30,58 +37,65 @@ export const TweetCard: React.FC<Tweet> = (tweet) => {
   }
 
   return (
-    <Flex borderBottom="1px solid" borderColor="gray.200" pb="2" fontSize="sm">
-      <MainAvatar mr="4" />
-      <Stack spacing="2" flex="1">
-        <HStack>
-          <Text fontWeight="bold">{tweet.user.name}</Text>
-          <Text>{formatDate(tweet.createdAt)}</Text>
-          <Text fontSize="xs" color="gray.300">
-            （Tweet_id:{tweet.id}）
+    <RouterLink to={`/tweets/${tweet.id}`}>
+      <Flex
+        borderBottom="1px solid"
+        borderColor="gray.200"
+        pb="2"
+        fontSize={isTweetDetail ? "md" : "sm"}
+      >
+        <MainAvatar mr="4" />
+        <Stack spacing="2" flex="1">
+          <HStack>
+            <Text fontWeight="bold">{tweet.user?.name}</Text>
+            <Text>{formatDate(tweet.createdAt)}</Text>
+            <Text fontSize="xs" color="gray.300">
+              （Tweet_id:{tweet.id}）
+            </Text>
+          </HStack>
+          <Text whiteSpace="pre-line" lineHeight="shorter">
+            {tweet.content}
           </Text>
-        </HStack>
-        <Text whiteSpace="pre-line" lineHeight="shorter">
-          {tweet.content}
-        </Text>
-        {image && (
-          <Image
-            src={image}
-            h="300px"
-            w="100%"
-            rounded="2xl"
-            objectFit="cover"
-          />
-        )}
-        <HStack justifyContent="space-between" maxW="240px">
-          <Button
-            leftIcon={<AiOutlineMessage />}
-            size="sm"
-            variant="ghost"
-            colorScheme="gray"
-            color="gray.400"
-          >
-            12
-          </Button>
-          <Button
-            leftIcon={<AiOutlineHeart />}
-            size="sm"
-            variant="ghost"
-            colorScheme="pink"
-            color="gray.400"
-          >
-            12
-          </Button>
-          <Button
-            leftIcon={<AiOutlineRetweet />}
-            size="sm"
-            variant="ghost"
-            colorScheme="green"
-            color="gray.400"
-          >
-            12
-          </Button>
-        </HStack>
-      </Stack>
-    </Flex>
+          {image && (
+            <Image
+              src={image}
+              h="300px"
+              w="100%"
+              rounded="2xl"
+              objectFit="cover"
+            />
+          )}
+          <HStack justifyContent="space-between" maxW="240px">
+            <Button
+              leftIcon={<AiOutlineMessage />}
+              size="sm"
+              variant="ghost"
+              colorScheme="gray"
+              color="gray.400"
+            >
+              12
+            </Button>
+            <Button
+              leftIcon={<AiOutlineHeart />}
+              size="sm"
+              variant="ghost"
+              colorScheme="pink"
+              color="gray.400"
+            >
+              12
+            </Button>
+            <Button
+              leftIcon={<AiOutlineRetweet />}
+              size="sm"
+              variant="ghost"
+              colorScheme="green"
+              color="gray.400"
+            >
+              12
+            </Button>
+          </HStack>
+        </Stack>
+      </Flex>
+    </RouterLink>
   );
 };
