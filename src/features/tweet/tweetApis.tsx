@@ -3,6 +3,19 @@ import { apiClient } from "lib/axios/apiClient";
 
 export type TweetParams = Pick<Tweet, "content" | "image">;
 
+export const getTweets = async (page: number, perPage?: number) => {
+  perPage = perPage || 10;
+  try {
+    const res = await apiClient.get<Tweet[]>(
+      `tweets?limit=${perPage}&offset=${page * perPage}`
+    );
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 export const postTweet = async (params: TweetParams) => {
   const { content, image } = params;
   try {

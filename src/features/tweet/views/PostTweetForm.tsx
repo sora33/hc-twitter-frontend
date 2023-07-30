@@ -4,10 +4,11 @@ import { TweetParams } from "features/tweet/tweetApis";
 import { MainButton } from "components/button/MainButton";
 import { FormInput } from "components/form/FormInput";
 import { useToastMessage } from "hooks/useToastMessage";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { postTweet } from "features/tweet/tweetApis";
-import { AiFillPicture, AiFillCloseCircle } from "react-icons/ai";
+import { AiOutlinePicture, AiFillCloseCircle } from "react-icons/ai";
 import { MainAvatar } from "components/avatar/MainAvatar";
+import { TweetContext } from "pages/Home";
 
 const checkFileSize = (value: FileList | null) => {
   const MAX_FILE_SIZE = 2 * 1024 * 1024;
@@ -22,6 +23,7 @@ const checkFileSize = (value: FileList | null) => {
 export const PostTweetForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const { setRefreshTweets } = useContext(TweetContext);
 
   const { toastMessage } = useToastMessage();
   const {
@@ -53,6 +55,7 @@ export const PostTweetForm: React.FC = () => {
       await postTweet(form);
       toastMessage({ title: "ツイートできました" });
       reset();
+      setRefreshTweets(true);
     } catch (error) {
       toastMessage({ title: `ツイートに失敗しました`, status: "error" });
     } finally {
@@ -97,10 +100,10 @@ export const PostTweetForm: React.FC = () => {
               label={
                 <Icon
                   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                  as={AiFillPicture}
+                  as={AiOutlinePicture}
                   mt="2"
-                  w={7}
-                  h={7}
+                  w={6}
+                  h={6}
                   color="blue.500"
                   cursor="pointer"
                 />
