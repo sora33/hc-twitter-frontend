@@ -11,6 +11,7 @@ import { SignUp } from "pages/auth/SignUp";
 import { SignIn } from "pages/auth/SignIn";
 import { Home } from "pages/Home";
 import { TweetShow } from "pages/tweets/TweetShow";
+import { UserShow } from "pages/users/UserShow";
 
 export const Router: React.FC = () => {
   const { handleGetCurrentUser, isSignedIn } = useAuth();
@@ -36,6 +37,7 @@ export const Router: React.FC = () => {
         >
           <Route path="home" element={<Home />} />
           <Route path="tweets/:id" element={<TweetShow />} />
+          <Route path="users/:id" element={<UserShow />} />
         </Route>
 
         <Route element={<Layout />}>
