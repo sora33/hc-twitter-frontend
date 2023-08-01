@@ -4,11 +4,13 @@ import { Navigate } from "react-router-dom";
 import { AuthLayout } from "pages/auth/AuthLayout";
 import { Layout } from "pages/Layout";
 import { useAuth } from "features/auth/useAuth";
+import { PrivateRouter } from "components/router/PrivateRouter";
+import { Page404 } from "pages/Page404";
+
 import { SignUp } from "pages/auth/SignUp";
 import { SignIn } from "pages/auth/SignIn";
 import { Home } from "pages/Home";
-import { PrivateRouter } from "components/router/PrivateRouter";
-import { Page404 } from "pages/Page404";
+import { TweetShow } from "pages/tweets/TweetShow";
 
 export const Router: React.FC = () => {
   const { handleGetCurrentUser, isSignedIn } = useAuth();
@@ -33,6 +35,7 @@ export const Router: React.FC = () => {
           }
         >
           <Route path="home" element={<Home />} />
+          <Route path="tweets/:id" element={<TweetShow />} />
         </Route>
 
         <Route element={<Layout />}>

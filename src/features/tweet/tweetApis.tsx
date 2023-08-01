@@ -16,6 +16,16 @@ export const getTweets = async (page: number, perPage?: number) => {
   }
 };
 
+export const getTweet = async (id: number) => {
+  try {
+    const res = await apiClient.get<Tweet>(`tweets/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 export const postTweet = async (params: TweetParams) => {
   const { content, image } = params;
   try {
