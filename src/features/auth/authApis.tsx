@@ -64,5 +64,8 @@ export const getCurrentUser = async (): Promise<{ data: User }> => {
     throw new Error("認証情報がありません");
   }
   const res = await apiClient.get<{ data: User }>("/users/validate_token");
+  // console.log("access-token", localStorage.getItem("access-token"));
+  // console.log("client", localStorage.getItem("client"));
+  // console.log("uid", localStorage.getItem("uid"));
   return res.data;
 };
