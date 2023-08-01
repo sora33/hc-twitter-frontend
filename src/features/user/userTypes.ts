@@ -1,11 +1,15 @@
+import { Tweet } from "features/tweet/tweetTypes";
 export interface User {
   id: number;
-  email: string;
+  tweets: Tweet[];
   name: string;
-  provider: "email";
-  uid: string;
+  email: string;
   description: string | null;
   place: string | null;
   website: string | null;
-  birthday: Date | null;
+  birthday: string | null;
+  headerImage: string | null;
+  avatarImage: string | null;
+  createdAt: Date;
+  updatedAt: Date;
 }
