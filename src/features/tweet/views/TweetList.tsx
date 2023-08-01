@@ -70,7 +70,7 @@ export const TweetList = () => {
     <Box>
       <Stack spacing={4}>
         {tweets.map((tweet) => (
-          <TweetCard key={tweet.id} {...tweet} />
+          <TweetCard key={tweet.id} tweet={tweet} tweetUser={tweet.user} />
         ))}
         {isLoading && <MainSpinner />}
       </Stack>
