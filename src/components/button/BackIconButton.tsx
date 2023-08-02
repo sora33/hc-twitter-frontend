@@ -7,7 +7,7 @@ export const BackIconButton: React.FC = () => {
   return (
     <Box>
       <IconButton
-        onClick={() => navigate("/home")}
+        onClick={() => navigate(-1)}
         aria-label="戻る"
         icon={<AiOutlineArrowLeft />}
         size="sm"
