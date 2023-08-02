@@ -5,7 +5,6 @@ import { MainAvatar } from "components/avatar/MainAvatar";
 import { MainButton } from "components/button/MainButton";
 import { formatDate } from "lib/functions/formatDate";
 import { ChildrenModal } from "components/modal/ChildrenModal";
-import { useAuth } from "features/auth/useAuth";
 import { shortenString } from "lib/functions/shortenString";
 import { AiOutlineCompass, AiOutlineLink, AiOutlineCrown, AiOutlineCalendar } from "react-icons/ai";
 
@@ -22,14 +21,13 @@ const IconText = ({ icon, text }: { icon: React.ReactNode; text: string | null }
 type UserProfileProps = {
   user: Omit<User, "tweets">;
   setRefetch: React.Dispatch<React.SetStateAction<boolean>>;
+  isMyPage?: boolean;
 };
-export const UserProfile: React.FC<UserProfileProps> = ({ user, setRefetch }) => {
+export const UserProfile: React.FC<UserProfileProps> = ({ user, setRefetch, isMyPage }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { currentUser } = useAuth();
-  const isMyPage = currentUser?.id === user.id;
 
   const onCloseModal = () => {
-    setRefetch((prev) => !prev);
+    setRefetch(true);
     onClose();
   };
 
