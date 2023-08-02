@@ -49,3 +49,13 @@ export const postTweet = async (params: TweetParams) => {
     throw error;
   }
 };
+
+export const deleteTweet = async (id: number) => {
+  try {
+    const res = await apiClient.delete(`tweets/${id}`);
+    return res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
