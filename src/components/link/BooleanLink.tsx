@@ -10,9 +10,5 @@ export const BooleanLink: React.FC<BooleanLinkProps> = ({
   link = "",
   children,
 }) => {
-  return isLink ? (
-    <>{children}</>
-  ) : (
-    <RouterLink to={link}>{children}</RouterLink>
-  );
+  return isLink ? <>{children}</> : <RouterLink to={link}>{children}</RouterLink>;
 };

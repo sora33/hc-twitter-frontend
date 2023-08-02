@@ -16,8 +16,7 @@ export const signUp = async (params: SignUpParams) => {
   } catch (error) {
     console.log(error);
     const errorMessage =
-      (error as ErrorRes)?.response?.data?.errors?.fullMessages?.[0] ||
-      "エラーが発生しました";
+      (error as ErrorRes)?.response?.data?.errors?.fullMessages?.[0] || "エラーが発生しました";
     throw errorMessage;
   }
 };

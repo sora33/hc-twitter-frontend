@@ -17,8 +17,7 @@ export const TweetCard: React.FC<TweetCardProps> = ({
   tweetUser: tweetUser,
 }) => {
   const image = typeof tweet.image === "string" ? tweet.image : null;
-  const avatarImage =
-    typeof tweetUser.avatarImage === "string" ? tweetUser.avatarImage : null;
+  const avatarImage = typeof tweetUser.avatarImage === "string" ? tweetUser.avatarImage : null;
 
   return (
     <Flex
@@ -27,11 +26,7 @@ export const TweetCard: React.FC<TweetCardProps> = ({
       pb="2"
       fontSize={isTweetDetail ? "md" : "sm"}
     >
-      <MainAvatar
-        mr="4"
-        src={avatarImage ?? ""}
-        link={`/users/${tweetUser.id}`}
-      />
+      <MainAvatar mr="4" src={avatarImage ?? ""} link={`/users/${tweetUser.id}`} />
       <Stack spacing="2" flex="1">
         <BooleanLink isLink={isTweetDetail} link={`/tweets/${tweet.id}`}>
           <Stack spacing="2">
@@ -44,15 +39,7 @@ export const TweetCard: React.FC<TweetCardProps> = ({
             <Text whiteSpace="pre-line" lineHeight="shorter">
               {tweet.content}
             </Text>
-            {image && (
-              <Image
-                src={image}
-                h="300px"
-                w="100%"
-                rounded="2xl"
-                objectFit="cover"
-              />
-            )}
+            {image && <Image src={image} h="300px" w="100%" rounded="2xl" objectFit="cover" />}
           </Stack>
         </BooleanLink>
         <HStack justifyContent="space-between" maxW="240px">

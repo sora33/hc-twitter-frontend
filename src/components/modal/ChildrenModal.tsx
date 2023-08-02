@@ -15,14 +15,7 @@ export const ChildrenModal: React.FC<{
   props?: ModalProps;
   title?: string;
   size?: ModalProps["size"];
-}> = ({
-  isOpen,
-  onClose,
-  title,
-  children,
-  props,
-  size = { base: "xs", sm: "md", md: "xl" },
-}) => {
+}> = ({ isOpen, onClose, title, children, props, size = { base: "xs", sm: "md", md: "xl" } }) => {
   return (
     <Modal
       isOpen={isOpen}

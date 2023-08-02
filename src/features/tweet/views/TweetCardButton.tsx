@@ -1,20 +1,13 @@
 import { ReactNode, ReactElement } from "react";
 import { Button } from "@chakra-ui/react";
-import {
-  AiOutlineHeart,
-  AiOutlineMessage,
-  AiOutlineRetweet,
-} from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineMessage, AiOutlineRetweet } from "react-icons/ai";
 
 type TweetCardButtonProps = {
   type: "good" | "comment" | "retweet";
   children: ReactNode;
 };
 
-export const TweetCardButton: React.FC<TweetCardButtonProps> = ({
-  type,
-  children,
-}) => {
+export const TweetCardButton: React.FC<TweetCardButtonProps> = ({ type, children }) => {
   let IconComponent: ReactElement, colorScheme: string;
 
   switch (type) {

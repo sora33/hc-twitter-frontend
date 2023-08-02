@@ -120,13 +120,7 @@ export const PostTweetForm: React.FC = () => {
               error={errors.image?.message}
             />
           </Box>
-          <MainButton
-            type="submit"
-            variant="solid"
-            isLoading={isLoading}
-            size="sm"
-            rounded="3xl"
-          >
+          <MainButton type="submit" variant="solid" isLoading={isLoading} size="sm" rounded="3xl">
             ツイートする
           </MainButton>
         </Flex>

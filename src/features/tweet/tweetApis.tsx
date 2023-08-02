@@ -6,9 +6,7 @@ export type TweetParams = Pick<Tweet, "content" | "image">;
 export const getTweets = async (page: number, perPage?: number) => {
   perPage = perPage || 10;
   try {
-    const res = await apiClient.get<Tweet[]>(
-      `tweets?limit=${perPage}&offset=${page * perPage}`
-    );
+    const res = await apiClient.get<Tweet[]>(`tweets?limit=${perPage}&offset=${page * perPage}`);
     return res.data;
   } catch (error) {
     console.log(error);

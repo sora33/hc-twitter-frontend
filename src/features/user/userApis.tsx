@@ -13,13 +13,7 @@ export const getUser = async (id: number) => {
 
 export type PutProfileParams = Pick<
   User,
-  | "name"
-  | "description"
-  | "place"
-  | "website"
-  | "birthday"
-  | "avatarImage"
-  | "headerImage"
+  "name" | "description" | "place" | "website" | "birthday" | "avatarImage" | "headerImage"
 > & {
   avatarImage: FileList | null;
   headerImage: FileList | null;
@@ -37,19 +31,11 @@ export const putProfile = async (params: PutProfileParams) => {
   formData.append("birthday", params.birthday || "");
 
   if (params.headerImage && params.headerImage.length > 0) {
-    formData.append(
-      "headerImage",
-      params.headerImage[0],
-      params.headerImage[0].name
-    );
+    formData.append("headerImage", params.headerImage[0], params.headerImage[0].name);
   }
 
   if (params.avatarImage && params.avatarImage.length > 0) {
-    formData.append(
-      "avatarImage",
-      params.avatarImage[0],
-      params.avatarImage[0].name
-    );
+    formData.append("avatarImage", params.avatarImage[0], params.avatarImage[0].name);
   }
 
   try {

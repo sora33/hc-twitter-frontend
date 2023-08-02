@@ -14,8 +14,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   });
 
   return (
-    <AuthContext.Provider value={{ authState, setAuthState }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ authState, setAuthState }}>{children}</AuthContext.Provider>
   );
 };

@@ -53,13 +53,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = (props) => {
 
   return (
     <Flex pb="2">
-      <Stack
-        as="form"
-        spacing="2"
-        w="100%"
-        onSubmit={handleSubmit(onSubmit)}
-        position="relative"
-      >
+      <Stack as="form" spacing="2" w="100%" onSubmit={handleSubmit(onSubmit)} position="relative">
         <FormInput
           type="file"
           label={
@@ -133,17 +127,12 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = (props) => {
           })}
           error={errors.description?.message}
         />
-        <FormInput
-          label="場所"
-          register={register("place")}
-          error={errors.place?.message}
-        />
+        <FormInput label="場所" register={register("place")} error={errors.place?.message} />
         <FormInput
           label="ウェブサイト"
           register={register("website", {
             pattern: {
-              value:
-                /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/,
+              value: /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/,
               message: "有効なウェブサイトURLを入力してください",
             },
           })}

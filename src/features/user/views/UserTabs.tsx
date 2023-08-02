@@ -7,14 +7,7 @@ const UserTabButton = ({ children }: { children: React.ReactNode }) => {
 
 export const UserTabs = () => {
   return (
-    <HStack
-      spacing={4}
-      mt="4"
-      mb="4"
-      pb="2"
-      borderBottom="1px solid"
-      borderColor="gray.200"
-    >
+    <HStack spacing={4} mt="4" mb="4" pb="2" borderBottom="1px solid" borderColor="gray.200">
       <UserTabButton>ツイート</UserTabButton>
       <UserTabButton>返信</UserTabButton>
       <UserTabButton>ハイライト</UserTabButton>

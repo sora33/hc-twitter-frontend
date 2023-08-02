@@ -25,8 +25,7 @@ export const SignUpForm: React.FC = () => {
       await signUp(form);
       toastMessage({
         title: "アカウントの仮登録ができました",
-        description:
-          "確認メールを送信していますので、そちらでアカウント本登録をお願いします。",
+        description: "確認メールを送信していますので、そちらでアカウント本登録をお願いします。",
         duration: 9000,
       });
       navigate("/auth/signIn");
@@ -68,8 +67,7 @@ export const SignUpForm: React.FC = () => {
           required: "必須項目です",
           minLength: { value: 6, message: "6文字以上で入力してください" },
           pattern: {
-            value:
-              /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{6,}$/,
+            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{6,}$/,
             message: "英数字を混ぜてください",
           },
         })}
@@ -80,8 +78,7 @@ export const SignUpForm: React.FC = () => {
         label="パスワード（確認）"
         register={register("passwordConfirmation", {
           required: "必須項目です",
-          validate: (value) =>
-            value === passwordWatch || "パスワードが一致していません",
+          validate: (value) => value === passwordWatch || "パスワードが一致していません",
         })}
         error={errors.passwordConfirmation?.message}
       />

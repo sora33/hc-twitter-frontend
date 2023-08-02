@@ -10,6 +10,4 @@ export interface AuthContextData {
   setAuthState: Dispatch<SetStateAction<AuthContextData["authState"]>>;
 }
 
-export const AuthContext = createContext<AuthContextData | undefined>(
-  undefined
-);
+export const AuthContext = createContext<AuthContextData | undefined>(undefined);

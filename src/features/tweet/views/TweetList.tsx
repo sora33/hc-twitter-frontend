@@ -46,10 +46,7 @@ export const TweetList = () => {
   }, [refreshTweets, setRefreshTweets]);
 
   const handleScroll = useCallback(() => {
-    if (
-      window.innerHeight + window.scrollY >=
-      document.body.offsetHeight - 200
-    ) {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
       if (!loadingRef.current) {
         setPage((page) => page + 1);
         loadingRef.current = true;
