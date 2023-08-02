@@ -9,21 +9,14 @@ import { postTweet } from "features/tweet/tweetApis";
 import { AiOutlinePicture, AiFillCloseCircle } from "react-icons/ai";
 import { MainAvatar } from "components/avatar/MainAvatar";
 import { TweetContext } from "pages/Home";
-
-const checkFileSize = (value: FileList | null) => {
-  const MAX_FILE_SIZE = 2 * 1024 * 1024;
-  if (!value || value.length === 0) return true;
-  const file = value[0];
-  if (file.size > MAX_FILE_SIZE) {
-    return "ファイルサイズは2MB以下にしてください。";
-  }
-  return true;
-};
+import { useAuth } from "features/auth/useAuth";
+import { checkFileSize } from "lib/functions/checkFileSize";
 
 export const PostTweetForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const { setRefreshTweets } = useContext(TweetContext);
+  const { currentUser } = useAuth();
 
   const { toastMessage } = useToastMessage();
   const {
@@ -65,7 +58,11 @@ export const PostTweetForm: React.FC = () => {
 
   return (
     <Flex pb="2" borderBottom="1px solid" borderColor="gray.200">
-      <MainAvatar mr="4" />
+      <MainAvatar
+        mr="4"
+        src={currentUser?.avatarImage ?? ""}
+        link={`/users/${currentUser?.id ?? ""}`}
+      />
       <Stack as="form" spacing="2" w="100%" onSubmit={handleSubmit(onSubmit)}>
         <FormInput
           placeholder="今どうしてる？"
