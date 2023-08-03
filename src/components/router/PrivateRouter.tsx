@@ -6,10 +6,7 @@ interface PrivateRouterProps {
   condition: boolean;
 }
 
-export const PrivateRouter: React.FC<PrivateRouterProps> = ({
-  children,
-  condition,
-}) => {
+export const PrivateRouter: React.FC<PrivateRouterProps> = ({ children, condition }) => {
   const { isLoading } = useAuth();
 
   if (!isLoading) {

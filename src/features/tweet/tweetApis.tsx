@@ -6,9 +6,7 @@ export type TweetParams = Pick<Tweet, "content" | "image">;
 export const getTweets = async (page: number, perPage?: number) => {
   perPage = perPage || 10;
   try {
-    const res = await apiClient.get<Tweet[]>(
-      `tweets?limit=${perPage}&offset=${page * perPage}`
-    );
+    const res = await apiClient.get<Tweet[]>(`tweets?limit=${perPage}&offset=${page * perPage}`);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -46,6 +44,16 @@ export const postTweet = async (params: TweetParams) => {
       });
       return resImg;
     }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const deleteTweet = async (id: number) => {
+  try {
+    const res = await apiClient.delete(`tweets/${id}`);
+    return res;
   } catch (error) {
     console.log(error);
     throw error;

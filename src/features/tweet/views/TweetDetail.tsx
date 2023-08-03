@@ -15,11 +15,5 @@ export const TweetDetail = () => {
     return <MainSpinner />;
   }
 
-  return (
-    <Box>
-      {tweet && (
-        <TweetCard isTweetDetail tweet={tweet} tweetUser={tweet.user} />
-      )}
-    </Box>
-  );
+  return <Box>{tweet && <TweetCard isTweetDetail tweet={tweet} tweetUser={tweet.user} />}</Box>;
 };

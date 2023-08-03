@@ -6,14 +6,7 @@ import { MainButton } from "components/button/MainButton";
 export const Header: React.FC = () => {
   const { isSignedIn } = useAuth();
   return (
-    <Box
-      as="header"
-      position="sticky"
-      top="0"
-      bg="white"
-      zIndex="1"
-      boxShadow="xs"
-    >
+    <Box as="header" position="sticky" top="0" bg="white" zIndex="1" boxShadow="xs">
       <Container maxW="container.md">
         <Flex justifyContent="space-between" alignItems="center">
           <MainButton link="/" fontSize="2xl">
