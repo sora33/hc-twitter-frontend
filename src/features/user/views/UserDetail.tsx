@@ -1,7 +1,6 @@
 import { Stack, Box, Text } from "@chakra-ui/react";
 import { useUser } from "features/user/useUser";
 import { MainSpinner } from "components/loading/MainSpinner";
-import { MainLoading } from "components/loading/MainLoading";
 import { useParams } from "react-router-dom";
 import { TweetCard } from "features/tweet/views/TweetCard";
 import { UserProfile } from "features/user/views/UserProfile";
@@ -25,7 +24,7 @@ export const UserDetail = () => {
 
   return (
     <Box>
-      {isRefetching && <MainLoading />}
+      {isRefetching && <MainSpinner variant="allView" />}
       <UserProfile user={user} setRefetch={setRefetch} isMyPage={isMyPage} />
       <UserTabs />
 

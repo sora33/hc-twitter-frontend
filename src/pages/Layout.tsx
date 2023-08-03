@@ -7,15 +7,15 @@ export const Layout: React.FC = () => {
   return (
     <>
       <Header />
-      <Container maxW="container.md">
+      <Container maxW="container.md" px={{ base: "0", sm: "auto" }}>
         <Flex mt="4">
           <Sidebar />
           <Stack
             as="main"
+            mx={{ base: "", sm: "4" }}
             spacing={4}
             flex="1"
             px="4"
-            mx="4"
             borderX="1px solid"
             borderColor="gray.200"
           >

@@ -13,6 +13,7 @@ export const SignInForm: React.FC = () => {
   const { handleGetCurrentUser } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [isGuestLoading, setIsGuestLoading] = useState(false);
   const { toastMessage } = useToastMessage();
   const {
     register,
@@ -31,6 +32,22 @@ export const SignInForm: React.FC = () => {
       toastMessage({ title: `ログインに失敗しました`, status: "error" });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleGuestSignIn = async () => {
+    try {
+      setIsGuestLoading(true);
+      {
+        await signIn({ email: "test1234@examle.com", password: "test1234" });
+        await handleGetCurrentUser();
+        toastMessage({ title: "ログインできました" });
+        navigate("/home");
+      }
+    } catch (error) {
+      toastMessage({ title: `ログインに失敗しました`, status: "error" });
+    } finally {
+      setIsGuestLoading(false);
     }
   };
 
@@ -63,6 +80,9 @@ export const SignInForm: React.FC = () => {
 
       <MainButton type="submit" variant="solid" isLoading={isLoading}>
         ログイン
+      </MainButton>
+      <MainButton variant="outline" onClick={handleGuestSignIn} isLoading={isGuestLoading}>
+        ゲストユーザーでログイン
       </MainButton>
     </Stack>
   );

@@ -1,4 +1,4 @@
-import { Stack, Box } from "@chakra-ui/react";
+import { Stack, Box, useMediaQuery } from "@chakra-ui/react";
 import { MainButton } from "components/button/MainButton";
 import { useLocation } from "react-router-dom";
 import {
@@ -13,6 +13,9 @@ import { useAuth } from "features/auth/useAuth";
 const iconStyle = { marginTop: "-4px" };
 
 export const Sidebar: React.FC = () => {
+  const [isLargerThanMd] = useMediaQuery("(min-width: 48em)");
+  console.log(isLargerThanMd, "isLargerThanMd");
+
   const location = useLocation();
   const { currentUser } = useAuth();
   const currentUserId = currentUser?.id;
@@ -47,17 +50,30 @@ export const Sidebar: React.FC = () => {
 
   return (
     <Box as="nav">
-      <Stack spacing={4} w="180px" position="sticky" top="14">
+      <Stack
+        spacing={4}
+        position={{ base: "fixed", sm: "sticky" }}
+        top={{ base: "auto", sm: "14" }}
+        bottom={{ base: "0", sm: "auto", md: "0" }}
+        pl={{ base: "0", sm: "4" }}
+        w={{ base: "100%", sm: "auto", md: "180px" }}
+        flexDirection={{ base: "row", sm: "column" }}
+        zIndex={1}
+        bg={{ base: "white", sm: "transparent" }}
+      >
         {SidebarList.map((item) => (
           <MainButton
             link={item.link}
-            justifyContent="start"
             colorScheme="gray"
             variant={location.pathname === item.link ? "solid" : "ghost"}
             key={item.name}
             leftIcon={item.icon}
+            justifyContent={{ base: "center", md: "flex-start" }}
+            flex={{ base: "1", sm: "none" }}
+            ml={{ base: "0", sm: "auto", md: "0" }}
+            py={{ base: "6", sm: "0" }}
           >
-            {item.name}
+            {isLargerThanMd && item.name}
           </MainButton>
         ))}
       </Stack>

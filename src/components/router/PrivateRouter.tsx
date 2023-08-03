@@ -1,4 +1,4 @@
-import { MainLoading } from "components/loading/MainLoading";
+import { MainSpinner } from "components/loading/MainSpinner";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "features/auth/useAuth";
 interface PrivateRouterProps {
@@ -16,6 +16,6 @@ export const PrivateRouter: React.FC<PrivateRouterProps> = ({ children, conditio
       return <Navigate to="/auth/signIn" replace />;
     }
   } else {
-    return <MainLoading />;
+    return <MainSpinner variant="allView" />;
   }
 };

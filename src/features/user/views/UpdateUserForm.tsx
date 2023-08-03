@@ -122,8 +122,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = (props) => {
           label="自己紹介"
           type="textarea"
           register={register("description", {
-            required: "必須項目です",
-            maxLength: { value: 140, message: "160文字以内で入力してください" },
+            maxLength: { value: 160, message: "160文字以内で入力してください" },
           })}
           error={errors.description?.message}
         />
