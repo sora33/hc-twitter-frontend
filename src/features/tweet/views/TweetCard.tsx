@@ -1,13 +1,14 @@
-import { Flex, HStack, Stack, Text, Image } from "@chakra-ui/react";
+import { Flex, HStack, Stack, Text } from "@chakra-ui/react";
 import { MainAvatar } from "components/avatar/MainAvatar";
 import { MainButton } from "components/button/MainButton";
 import { BooleanLink } from "components/link/BooleanLink";
 import { Tweet } from "features/tweet/tweetTypes";
-import { TweetCardButton } from "features/tweet/views/TweetCardButton";
+import { TweetCardButton, CommentButton } from "features/tweet/views/TweetCardButton";
 import { User } from "features/user/userTypes";
 import { formatDate } from "lib/functions/formatDate";
 import { deleteTweet } from "features/tweet/tweetApis";
 import { useToastMessage } from "hooks/useToastMessage";
+import { MainImage } from "components/image/MainImage";
 
 type TweetCardProps = {
   isTweetDetail?: boolean;
@@ -71,12 +72,12 @@ export const TweetCard: React.FC<TweetCardProps> = ({
             <Text whiteSpace="pre-line" lineHeight="shorter">
               {tweet.content}
             </Text>
-            {image && <Image src={image} h="300px" w="100%" rounded="2xl" objectFit="cover" />}
+            {image && <MainImage src={image} />}
           </Stack>
         </BooleanLink>
         <HStack justifyContent="space-between" maxW="240px">
+          <CommentButton tweet={tweet} tweetUser={tweetUser} />
           <TweetCardButton type="good">12</TweetCardButton>
-          <TweetCardButton type="comment">12</TweetCardButton>
           <TweetCardButton type="retweet">12</TweetCardButton>
         </HStack>
       </Stack>
