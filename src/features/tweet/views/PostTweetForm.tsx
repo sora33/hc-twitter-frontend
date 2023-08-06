@@ -1,22 +1,24 @@
-import { Stack, Flex, Icon, Image, Box } from "@chakra-ui/react";
+import { Stack, Flex, Box } from "@chakra-ui/react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { TweetParams } from "features/tweet/tweetApis";
 import { MainButton } from "components/button/MainButton";
 import { FormInput } from "components/form/FormInput";
 import { useToastMessage } from "hooks/useToastMessage";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { postTweet } from "features/tweet/tweetApis";
-import { AiOutlinePicture, AiFillCloseCircle } from "react-icons/ai";
 import { MainAvatar } from "components/avatar/MainAvatar";
 import { TweetContext } from "pages/Home";
 import { useAuth } from "features/auth/useAuth";
 import { checkFileSize } from "lib/functions/checkFileSize";
+import { MainImage } from "components/image/MainImage";
+import { IconClose } from "components/icon/IconClose";
+import { IconInputImage } from "components/icon/IconInputImage";
 
 export const PostTweetForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const { setRefreshTweets } = useContext(TweetContext);
   const { currentUser } = useAuth();
+  console.log(currentUser, "currentUser");
 
   const { toastMessage } = useToastMessage();
   const {
@@ -29,19 +31,6 @@ export const PostTweetForm: React.FC = () => {
   } = useForm<TweetParams>();
 
   const { image } = watch();
-  useEffect(() => {
-    if (image && image[0]) {
-      setPreviewUrl(URL.createObjectURL(image[0]));
-    } else {
-      setPreviewUrl(null);
-    }
-  }, [image]);
-
-  const onRemoveImage = () => {
-    setValue("image", null);
-    setPreviewUrl(null);
-  };
-
   const onSubmit: SubmitHandler<TweetParams> = async (form) => {
     try {
       setIsLoading(true);
@@ -73,27 +62,10 @@ export const PostTweetForm: React.FC = () => {
           })}
           error={errors.content?.message}
         />
-        {previewUrl && (
+        {image?.[0] && (
           <Box position="relative">
-            <Image
-              src={previewUrl}
-              alt="preview"
-              h="300px"
-              w="100%"
-              rounded="2xl"
-              objectFit="cover"
-            />
-            <Icon
-              onClick={onRemoveImage}
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-              as={AiFillCloseCircle}
-              cursor="pointer"
-              position="absolute"
-              top="-1rem"
-              right="-1rem"
-              w="8"
-              h="8"
-            />
+            <MainImage src={URL.createObjectURL(image[0])} alt="preview" />
+            <IconClose onClick={() => setValue("image", null)} />
           </Box>
         )}
 
@@ -101,17 +73,7 @@ export const PostTweetForm: React.FC = () => {
           <Box>
             <FormInput
               type="file"
-              label={
-                <Icon
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                  as={AiOutlinePicture}
-                  mt="2"
-                  w={6}
-                  h={6}
-                  color="blue.500"
-                  cursor="pointer"
-                />
-              }
+              label={<IconInputImage />}
               register={register("image", {
                 validate: {
                   checkFileSize,
