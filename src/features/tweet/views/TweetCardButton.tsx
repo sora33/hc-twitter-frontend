@@ -9,8 +9,13 @@ import { User } from "features/user/userTypes";
 type CommentButtonProps = {
   tweet: Omit<Tweet, "user">;
   tweetUser: Omit<User, "tweets">;
+  setRefetchComments?: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export const CommentButton: React.FC<CommentButtonProps> = ({ tweet, tweetUser }) => {
+export const CommentButton: React.FC<CommentButtonProps> = ({
+  tweet,
+  tweetUser,
+  setRefetchComments,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [commentsCount, setCommentsCoute] = useState(tweet.commentsCount ?? 0);
 

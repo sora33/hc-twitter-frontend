@@ -15,6 +15,7 @@ import { IconInputImage } from "components/icon/IconInputImage";
 import { Tweet } from "features/tweet/tweetTypes";
 import { User } from "features/user/userTypes";
 import { formatDate } from "lib/functions/formatDate";
+import { useComments } from "features/comment/useComments";
 
 type PostCommentFormProps = {
   tweet: Omit<Tweet, "user">;
@@ -28,6 +29,7 @@ export const PostCommentForm: React.FC<PostCommentFormProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { currentUser } = useAuth();
+  const { setRefetch } = useComments();
 
   const { toastMessage } = useToastMessage();
   const {
@@ -46,6 +48,7 @@ export const PostCommentForm: React.FC<PostCommentFormProps> = ({
       await postComment({ ...form, tweetId: tweet.id });
       toastMessage({ title: "コメントできました" });
       reset();
+      setRefetch(true);
       void hundleSubmit();
     } catch (error) {
       toastMessage({ title: `コメントに失敗しました`, status: "error" });
