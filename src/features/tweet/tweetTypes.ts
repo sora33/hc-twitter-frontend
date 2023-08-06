@@ -4,6 +4,7 @@ export interface Tweet {
   user: User;
   content: string;
   image: FileList | null;
+  commentsCount: number;
   createdAt: Date;
   updatedAt: Date;
 }
