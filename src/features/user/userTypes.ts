@@ -1,7 +1,7 @@
 import { Tweet } from "features/tweet/tweetTypes";
-export interface User {
+import { Comment } from "features/comment/commentTypes";
+export interface UserBase {
   id: number;
-  tweets: Tweet[];
   name: string;
   email: string;
   description: string | null;
@@ -12,4 +12,8 @@ export interface User {
   avatarImage: string | null;
   createdAt: Date;
   updatedAt: Date;
+}
+export interface User extends UserBase {
+  tweets: Tweet[];
+  comments: Comment[];
 }

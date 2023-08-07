@@ -4,7 +4,7 @@ import { MainButton } from "components/button/MainButton";
 import { BooleanLink } from "components/link/BooleanLink";
 import { Tweet } from "features/tweet/tweetTypes";
 import { TweetCardButton, CommentButton } from "features/tweet/views/TweetCardButton";
-import { User } from "features/user/userTypes";
+import { UserBase } from "features/user/userTypes";
 import { formatDate } from "lib/functions/formatDate";
 import { deleteTweet } from "features/tweet/tweetApis";
 import { useToastMessage } from "hooks/useToastMessage";
@@ -13,7 +13,7 @@ import { MainImage } from "components/image/MainImage";
 type TweetCardProps = {
   isTweetDetail?: boolean;
   tweet: Omit<Tweet, "user">;
-  tweetUser: Omit<User, "tweets">;
+  tweetUser: UserBase;
   isDeletable?: boolean;
   setRefetch?: React.Dispatch<React.SetStateAction<boolean>>;
   setRefetchComments?: React.Dispatch<React.SetStateAction<boolean>>;

@@ -4,11 +4,11 @@ import { AiOutlineHeart, AiOutlineMessage, AiOutlineRetweet } from "react-icons/
 import { ChildrenModal } from "components/modal/ChildrenModal";
 import { PostCommentForm } from "features/comment/views/PostCommentForm";
 import { Tweet } from "features/tweet/tweetTypes";
-import { User } from "features/user/userTypes";
+import { UserBase } from "features/user/userTypes";
 
 type CommentButtonProps = {
   tweet: Omit<Tweet, "user">;
-  tweetUser: Omit<User, "tweets">;
+  tweetUser: UserBase;
   setRefetchComments?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export const CommentButton: React.FC<CommentButtonProps> = ({
