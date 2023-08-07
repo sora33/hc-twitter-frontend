@@ -25,7 +25,7 @@ export const MainSpinner: React.FC<MainSpinnerProps> = ({ variant = "normal", ..
     );
   } else if (variant === "normal") {
     return (
-      <Flex w="100%" alignItems="center" justifyContent="center" color="blue.500" {...props}>
+      <Flex w="100%" py="4" alignItems="center" justifyContent="center" color="blue.500" {...props}>
         <Spinner />
       </Flex>
     );

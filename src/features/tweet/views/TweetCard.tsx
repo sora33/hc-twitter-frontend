@@ -16,6 +16,7 @@ type TweetCardProps = {
   tweetUser: Omit<User, "tweets">;
   isDeletable?: boolean;
   setRefetch?: React.Dispatch<React.SetStateAction<boolean>>;
+  setRefetchComments?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export const TweetCard: React.FC<TweetCardProps> = ({
   isTweetDetail = false,
@@ -23,6 +24,7 @@ export const TweetCard: React.FC<TweetCardProps> = ({
   tweetUser: tweetUser,
   isDeletable = false,
   setRefetch,
+  setRefetchComments,
 }) => {
   const { toastMessage } = useToastMessage();
   const image = typeof tweet.image === "string" ? tweet.image : null;
@@ -76,7 +78,11 @@ export const TweetCard: React.FC<TweetCardProps> = ({
           </Stack>
         </BooleanLink>
         <HStack justifyContent="space-between" maxW="240px">
-          <CommentButton tweet={tweet} tweetUser={tweetUser} />
+          <CommentButton
+            tweet={tweet}
+            tweetUser={tweetUser}
+            setRefetchComments={setRefetchComments}
+          />
           <TweetCardButton type="good">12</TweetCardButton>
           <TweetCardButton type="retweet">12</TweetCardButton>
         </HStack>

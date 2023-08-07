@@ -9,19 +9,25 @@ import { User } from "features/user/userTypes";
 type CommentButtonProps = {
   tweet: Omit<Tweet, "user">;
   tweetUser: Omit<User, "tweets">;
+  setRefetchComments?: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export const CommentButton: React.FC<CommentButtonProps> = ({ tweet, tweetUser }) => {
+export const CommentButton: React.FC<CommentButtonProps> = ({
+  tweet,
+  tweetUser,
+  setRefetchComments,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [commentCoute, setCommentCoute] = useState(11);
+  const [commentsCount, setCommentsCoute] = useState(tweet.commentsCount ?? 0);
 
   const hundleSubmit = () => {
-    setCommentCoute((commentCoute) => commentCoute + 1);
+    setCommentsCoute((commentsCount) => commentsCount + 1);
+    setRefetchComments && setRefetchComments(true);
     onClose();
   };
   return (
     <>
       <TweetCardButton type="comment" onClick={onOpen}>
-        {commentCoute}
+        {commentsCount}
       </TweetCardButton>
       <ChildrenModal isOpen={isOpen} onClose={onClose} title="コメント投稿">
         <PostCommentForm tweet={tweet} tweetUser={tweetUser} hundleSubmit={hundleSubmit} />

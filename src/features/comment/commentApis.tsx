@@ -5,6 +5,16 @@ export type CommentParams = Pick<Comment, "tweetId" | "content" | "image"> & {
   image: FileList | null;
 };
 
+export const getComments = async (id: number | string) => {
+  try {
+    const res = await apiClient.get<Comment[]>(`tweets/${id}/comments`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 export const postComment = async (params: CommentParams) => {
   const { content, tweetId, image } = params;
   try {
