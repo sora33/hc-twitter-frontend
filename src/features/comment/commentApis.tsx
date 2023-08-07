@@ -39,3 +39,13 @@ export const postComment = async (params: CommentParams) => {
     throw error;
   }
 };
+
+export const deleteComment = async (id: number) => {
+  try {
+    const res = await apiClient.delete(`comments/${id}`);
+    return res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
