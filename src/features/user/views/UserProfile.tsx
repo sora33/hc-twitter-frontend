@@ -1,5 +1,5 @@
 import { Box, Stack, HStack, Image, Text, Link, useDisclosure } from "@chakra-ui/react";
-import { User } from "features/user/userTypes";
+import { UserBase } from "features/user/userTypes";
 import { UpdateUserForm } from "features/user/views/UpdateUserForm";
 import { MainAvatar } from "components/avatar/MainAvatar";
 import { MainButton } from "components/button/MainButton";
@@ -19,7 +19,7 @@ const IconText = ({ icon, text }: { icon: React.ReactNode; text: string | null }
 };
 
 type UserProfileProps = {
-  user: Omit<User, "tweets">;
+  user: UserBase;
   setRefetch: React.Dispatch<React.SetStateAction<boolean>>;
   isMyPage?: boolean;
 };

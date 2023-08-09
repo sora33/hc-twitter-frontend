@@ -13,15 +13,16 @@ import { MainImage } from "components/image/MainImage";
 import { IconClose } from "components/icon/IconClose";
 import { IconInputImage } from "components/icon/IconInputImage";
 import { Tweet } from "features/tweet/tweetTypes";
-import { User } from "features/user/userTypes";
+import { UserBase } from "features/user/userTypes";
 import { formatDate } from "lib/functions/formatDate";
 import { useComments } from "features/comment/useComments";
 
 type PostCommentFormProps = {
   tweet: Omit<Tweet, "user">;
-  tweetUser: Omit<User, "tweets">;
+  tweetUser: UserBase;
   hundleSubmit: () => void;
 };
+
 export const PostCommentForm: React.FC<PostCommentFormProps> = ({
   tweet,
   tweetUser,

@@ -5,12 +5,12 @@ import { FormInput } from "components/form/FormInput";
 import { useToastMessage } from "hooks/useToastMessage";
 import { useState } from "react";
 import { checkFileSize } from "lib/functions/checkFileSize";
-import { User } from "features/user/userTypes";
+import { UserBase } from "features/user/userTypes";
 import { putProfile, PutProfileParams } from "features/user/userApis";
 import { MainAvatar } from "components/avatar/MainAvatar";
 import { formatDate } from "lib/functions/formatDate";
 type UpdateUserFormProps = {
-  user: Omit<User, "tweets">;
+  user: UserBase;
   onClose: () => void;
 };
 
