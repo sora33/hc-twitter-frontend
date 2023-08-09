@@ -16,7 +16,7 @@ export const CommentList: React.FC<commentListProps> = ({ comments }) => {
       {comments?.length > 0 ? (
         comments?.map((commentItem) => {
           const { user, ...comment } = commentItem;
-          return <CommentCard comment={comment} user={user} />;
+          return <CommentCard key={comment.id} comment={comment} user={user} />;
         })
       ) : (
         <Text fontSize="sm">コメントはありません</Text>
