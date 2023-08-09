@@ -5,6 +5,7 @@ import { BooleanLink } from "components/link/BooleanLink";
 import { Tweet } from "features/tweet/tweetTypes";
 import { TweetCardButton } from "features/tweet/views/TweetCardButton/TweetCardButton";
 import { CommentButton } from "features/tweet/views/TweetCardButton/CommentButton";
+import { RetweetButton } from "features/tweet/views/TweetCardButton/RetweetButton";
 import { UserBase } from "features/user/userTypes";
 import { formatDate } from "lib/functions/formatDate";
 import { deleteTweet } from "features/tweet/tweetApis";
@@ -85,7 +86,7 @@ export const TweetCard: React.FC<TweetCardProps> = ({
             setRefetchComments={setRefetchComments}
           />
           <TweetCardButton type="good">12</TweetCardButton>
-          <TweetCardButton type="retweet">12</TweetCardButton>
+          <RetweetButton tweet={tweet} />
         </HStack>
       </Stack>
     </Flex>
