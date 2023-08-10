@@ -9,6 +9,10 @@ export interface Tweet {
     count: number;
     isRetweeted: boolean;
   };
+  favorites: {
+    count: number;
+    isFavorited: boolean;
+  };
   createdAt: Date;
   updatedAt: Date;
 }
