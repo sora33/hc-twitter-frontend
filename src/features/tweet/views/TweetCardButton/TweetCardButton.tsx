@@ -1,9 +1,15 @@
 import { ReactNode, ReactElement } from "react";
 import { Button, ButtonProps } from "@chakra-ui/react";
-import { AiOutlineHeart, AiOutlineMessage, AiOutlineRetweet } from "react-icons/ai";
+import {
+  AiOutlineHeart,
+  AiOutlineMessage,
+  AiOutlineRetweet,
+  AiFillHeart,
+  AiFillMessage,
+} from "react-icons/ai";
 
 type TweetCardButtonProps = {
-  type: "good" | "comment" | "retweet";
+  type: "favorite" | "comment" | "retweet";
   children: ReactNode;
   isColor?: boolean;
 } & Omit<ButtonProps, "type" | "children">;
@@ -14,18 +20,21 @@ export const TweetCardButton: React.FC<TweetCardButtonProps> = ({
   isColor = false,
   ...buttonProps
 }) => {
-  let IconComponent: ReactElement, colorScheme: string;
+  let IconComponent: ReactElement, IconComponentFilled: ReactElement, colorScheme: string;
   switch (type) {
-    case "good":
+    case "favorite":
       IconComponent = <AiOutlineHeart />;
-      colorScheme = "pink";
+      IconComponentFilled = <AiFillHeart />;
+      colorScheme = "red";
       break;
     case "comment":
       IconComponent = <AiOutlineMessage />;
+      IconComponentFilled = <AiFillMessage />;
       colorScheme = "blue";
       break;
     case "retweet":
       IconComponent = <AiOutlineRetweet />;
+      IconComponentFilled = IconComponent;
       colorScheme = "green";
       break;
     default:
@@ -35,7 +44,7 @@ export const TweetCardButton: React.FC<TweetCardButtonProps> = ({
   return (
     <>
       <Button
-        leftIcon={IconComponent}
+        leftIcon={isColor ? IconComponentFilled : IconComponent}
         size="sm"
         variant="ghost"
         colorScheme={colorScheme}
