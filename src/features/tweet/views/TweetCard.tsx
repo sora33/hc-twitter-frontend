@@ -3,8 +3,8 @@ import { MainAvatar } from "components/avatar/MainAvatar";
 import { MainButton } from "components/button/MainButton";
 import { BooleanLink } from "components/link/BooleanLink";
 import { Tweet } from "features/tweet/tweetTypes";
-import { TweetCardButton } from "features/tweet/views/TweetCardButton/TweetCardButton";
 import { CommentButton } from "features/tweet/views/TweetCardButton/CommentButton";
+import { FavoriteButton } from "features/tweet/views/TweetCardButton/FavoriteButton";
 import { RetweetButton } from "features/tweet/views/TweetCardButton/RetweetButton";
 import { UserBase } from "features/user/userTypes";
 import { formatDate } from "lib/functions/formatDate";
@@ -85,7 +85,7 @@ export const TweetCard: React.FC<TweetCardProps> = ({
             tweetUser={tweetUser}
             setRefetchComments={setRefetchComments}
           />
-          <TweetCardButton type="good">12</TweetCardButton>
+          <FavoriteButton tweet={tweet} />
           <RetweetButton tweet={tweet} />
         </HStack>
       </Stack>
