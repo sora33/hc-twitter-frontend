@@ -19,12 +19,12 @@ if (danger.github.pr.changed_files > 10) {
   isAllCheckPassed = false;
 }
 
-if (!danger.github.pr.reviewers?.length > 0) {
+if (!danger.github.pr.reviewer) {
   warn("Reviewer not assigned to PR.");
   isAllCheckPassed = false;
 }
 
-if (!danger.github.pr.assignees?.length > 0) {
+if (!danger.github.pr.assignee) {
   warn("Assignee not selected for PR.");
   isAllCheckPassed = false;
 }
