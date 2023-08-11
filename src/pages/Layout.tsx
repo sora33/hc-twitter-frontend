@@ -1,4 +1,4 @@
-import { Box, Container, VStack, Stack, Flex } from "@chakra-ui/react";
+import { Container, Stack, Flex } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import { Header } from "components/layout/Header";
 import { Sidebar } from "components/layout/Sidebar";
