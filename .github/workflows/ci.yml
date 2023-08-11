@@ -33,6 +33,12 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+        # gitのユーザー情報を設定
+      - name: Set git user
+        run: |
+          git config --local user.email "shuuuya0616@gmail.com"
+          git config --local user.name "hiranuma"
+
       # ビルド＆デプロイ: yarn buildコマンドでアプリケーションをビルド
       - name: Build and Deploy
         run: yarn deploy
