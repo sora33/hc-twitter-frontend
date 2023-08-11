@@ -31,4 +31,6 @@ if (!danger.github.pr.assignee) {
 
 if (isAllCheckPassed) {
   markdown("## All checkes have passed.");
+} else {
+  markdown("## Some checks have failed.");
 }
