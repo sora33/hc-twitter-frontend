@@ -1,10 +1,9 @@
-import { danger, warn } from "danger";
+import { danger, warn, message } from "danger";
 
 // CheckList for this file
-// 1. Check if the PR is too big
-// 2. Check if the PR has too many files
-// 3. Check if the PR has an assignee
-// 4. Check if all checks have passed
+// ・Check if the PR is too big
+// ・Check if the PR has too many files
+// ・Check if the PR has an assignee
 
 let isAllCheckPassed = true;
 const diffLines = danger.github.pr.additions + danger.github.pr.deletions;
@@ -24,7 +23,5 @@ if (!danger.github.pr.assignee) {
 }
 
 if (isAllCheckPassed) {
-  markdown("## All checkes have passed.");
-} else {
-  markdown("## Some checks have failed.");
+  message("## All checkes is OK!!");
 }
