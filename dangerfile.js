@@ -3,9 +3,8 @@ import { danger, warn } from "danger";
 // CheckList for this file
 // 1. Check if the PR is too big
 // 2. Check if the PR has too many files
-// 3. Check if the PR has a reviewer
-// 4. Check if the PR has an assignee
-// 5. Check if all checks have passed
+// 3. Check if the PR has an assignee
+// 4. Check if all checks have passed
 
 let isAllCheckPassed = true;
 const diffLines = danger.github.pr.additions + danger.github.pr.deletions;
@@ -16,11 +15,6 @@ if (diffLines > 200) {
 
 if (danger.github.pr.changed_files > 10) {
   warn("Over 10 files modified in this PR.");
-  isAllCheckPassed = false;
-}
-
-if (!danger.github.pr.reviewer) {
-  warn("Reviewer not assigned to PR.");
   isAllCheckPassed = false;
 }
 
