@@ -11,7 +11,7 @@ const deletedLines = danger.git.deleted_files.reduce(
   0
 );
 
-if (addedLines + deletedLines > 200) {
+if (addedLines + deletedLines > 2) {
   warn("You have more than 200 line changes in this PR");
 }
 
