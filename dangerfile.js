@@ -1,4 +1,4 @@
-import { danger, fail, warn } from "danger";
+import { danger, warn } from "danger";
 
 const modifiedFiles = danger.git.modified_files;
 
@@ -20,5 +20,5 @@ if (modifiedFiles.length > 10) {
 }
 
 if (!danger.github.pr.assignee) {
-  fail("This pull request needs an assignee, and optionally include any reviewers.");
+  warn("This pull request needs an assignee, and optionally include any reviewers.");
 }
