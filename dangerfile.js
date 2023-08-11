@@ -1,26 +1,34 @@
 import { danger, warn } from "danger";
 
-const modifiedFiles = danger.git.modified_files;
+// CheckList for this file
+// 1. Check if the PR is too big
+// 2. Check if the PR has too many files
+// 3. Check if the PR has a reviewer
+// 4. Check if the PR has an assignee
+// 5. Check if all checks have passed
 
-// const addedLines = danger.git.created_files.reduce(
-//   (acc, file) => acc + (danger.git.diffForFile(file).added || "").split("\n").length,
-//   0
-// );
-// const deletedLines = danger.git.deleted_files.reduce(
-//   (acc, file) => acc + (danger.git.diffForFile(file).deleted || "").split("\n").length,
-//   0
-// );
-
+let isAllCheckPassed = true;
 const diffLines = danger.github.pr.additions + danger.github.pr.deletions;
-
-if (diffLines > 2) {
-  warn("You have more than 200 line changes in this PR");
+if (diffLines > 200) {
+  warn("Over 200 lines changed in this PR.");
+  isAllCheckPassed = false;
 }
 
-if (modifiedFiles.length > 10) {
-  warn("You have modified more than 10 files in this PR");
+if (danger.github.pr.changed_files > 10) {
+  warn("Over 10 files modified in this PR.");
+  isAllCheckPassed = false;
+}
+
+if (!danger.github.pr.reviews) {
+  warn("Reviewer not assigned to PR.");
+  isAllCheckPassed = false;
 }
 
 if (!danger.github.pr.assignee) {
-  warn("This pull request needs an assignee, and optionally include any reviewers.");
+  warn("Assignee not selected for PR.");
+  isAllCheckPassed = false;
+}
+
+if (isAllCheckPassed) {
+  markdown("## All checkes have passed.");
 }
