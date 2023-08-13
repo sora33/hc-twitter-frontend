@@ -33,10 +33,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      # ビルド: yarn buildコマンドでアプリケーションをビルド
-      - name: Build
-        run: yarn build
-
       # Lint実行: ESLintを使用してソースコードのlintを行います。
       - name: Lint with eslint
         run: yarn lint
@@ -47,3 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DANGER_DISABLE_TRANSPILATION: true
+
+      # ビルド: yarn buildコマンドでアプリケーションをビルド
+      - name: Build
+        run: yarn build
