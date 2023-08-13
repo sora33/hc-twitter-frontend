@@ -28,7 +28,6 @@ export const FollowButton: React.FC<FollowButtonProps> = ({ user }) => {
   const commonButtonProps = {
     size: "sm",
     minW: "150px",
-    variant: "outline",
     rounded: "3xl",
     isLoading: isLoading,
   };
@@ -38,6 +37,7 @@ export const FollowButton: React.FC<FollowButtonProps> = ({ user }) => {
       {isFollowing ? (
         <MainButton
           {...commonButtonProps}
+          variant="outline"
           colorScheme={isHovered ? "red" : "gray"}
           onClick={() => alert("フォロー解除メソッドを実装予定")}
           onMouseEnter={() => setIsHovered(true)}
@@ -46,7 +46,12 @@ export const FollowButton: React.FC<FollowButtonProps> = ({ user }) => {
           {isHovered ? "フォロー解除" : "フォロー中"}
         </MainButton>
       ) : (
-        <MainButton {...commonButtonProps} colorScheme="gray" onClick={hundleFollow}>
+        <MainButton
+          {...commonButtonProps}
+          variant="solid"
+          colorScheme="gray"
+          onClick={hundleFollow}
+        >
           フォローする
         </MainButton>
       )}
