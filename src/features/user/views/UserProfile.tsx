@@ -3,6 +3,7 @@ import { UserBase } from "features/user/userTypes";
 import { UpdateUserForm } from "features/user/views/UpdateUserForm";
 import { MainAvatar } from "components/avatar/MainAvatar";
 import { MainButton } from "components/button/MainButton";
+import { FollowButton } from "features/user/views/FollowButton";
 import { formatDate } from "lib/functions/formatDate";
 import { ChildrenModal } from "components/modal/ChildrenModal";
 import { shortenString } from "lib/functions/shortenString";
@@ -48,12 +49,13 @@ export const UserProfile: React.FC<UserProfileProps> = ({ user, setRefetch, isMy
         src={user.avatarImage ?? ""}
         border={"4px solid white"}
       />
-
       <Box minH="10" ml="auto">
-        {isMyPage && (
+        {isMyPage ? (
           <MainButton colorScheme="gray" variant="outline" rounded="3xl" onClick={onOpen}>
             プロフィールを編集
           </MainButton>
+        ) : (
+          <FollowButton user={user} />
         )}
       </Box>
       <Stack spacing={2}>

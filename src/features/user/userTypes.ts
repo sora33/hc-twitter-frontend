@@ -10,6 +10,7 @@ export interface UserBase {
   birthday: string | null;
   headerImage: string | null;
   avatarImage: string | null;
+  isFollowing: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
