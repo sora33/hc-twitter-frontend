@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MainButton } from "components/button/MainButton";
-import { postFollow } from "features/user/relationship/relationshipApis";
+import { postFollow, deleteFollow } from "features/user/relationship/relationshipApis";
 import { useToastMessage } from "hooks/useToastMessage";
 import { UserBase } from "features/user/userTypes";
 
@@ -17,10 +17,21 @@ export const FollowButton: React.FC<FollowButtonProps> = ({ user }) => {
     setIsLoading(true);
     try {
       await postFollow(user.id);
-      toastMessage({ title: "フォローしました" });
-      setIsFollowing(true);
+      toastMessage({ title: "フォローしました", duration: 1000 });
+      setIsFollowing((prev) => !prev);
     } catch (error) {
       toastMessage({ title: "フォローに失敗しました", status: "error" });
+    }
+    setIsLoading(false);
+  };
+  const hundleUnfollow = async () => {
+    setIsLoading(true);
+    try {
+      await deleteFollow(user.id);
+      toastMessage({ title: "フォローを解除しました", duration: 1000 });
+      setIsFollowing((prev) => !prev);
+    } catch (error) {
+      toastMessage({ title: "フォロー解除に失敗しました", status: "error" });
     }
     setIsLoading(false);
   };
@@ -39,7 +50,7 @@ export const FollowButton: React.FC<FollowButtonProps> = ({ user }) => {
           {...commonButtonProps}
           variant="outline"
           colorScheme={isHovered ? "red" : "gray"}
-          onClick={() => alert("フォロー解除メソッドを実装予定")}
+          onClick={hundleUnfollow}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
