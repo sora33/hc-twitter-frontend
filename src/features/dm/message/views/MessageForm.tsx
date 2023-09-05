@@ -11,14 +11,14 @@ import { Message } from "features/dm/message/messageTypes";
 type Props = {
   onNewMessage: (message: Message) => void;
 };
+type MessageParams = {
+  content: string;
+};
 
 export const MessageForm: React.FC<Props> = ({ onNewMessage }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { toastMessage } = useToastMessage();
   const { id } = useParams<{ id: string }>();
-  type MessageParams = {
-    content: string;
-  };
 
   const {
     register,
