@@ -17,9 +17,7 @@ export const GroupList: React.FC = () => {
   return (
     <Box>
       {data && data?.length > 0 ? (
-        data?.map((item) => {
-          return <GroupCard group={item} />;
-        })
+        data?.map((item) => <GroupCard key={item.id} group={item} />)
       ) : (
         <Text fontSize="sm">グループがありません。</Text>
       )}

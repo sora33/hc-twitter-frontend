@@ -20,14 +20,12 @@ export const GroupCard: React.FC<GroupCardProps> = ({ group }) => {
       />
       <Stack as={RouterLink} to={`./${group.id}`} spacing="2" flex="1">
         <HStack>
-          {users.map((user, index) => {
-            return (
-              <HStack key={user.id}>
-                <Text fontWeight="bold">{user.name}</Text>
-                {index !== users.length - 1 && <Text>,</Text>}
-              </HStack>
-            );
-          })}
+          {users.map((user, index) => (
+            <HStack key={user.id}>
+              <Text fontWeight="bold">{user.name}</Text>
+              {index !== users.length - 1 && <Text>,</Text>}
+            </HStack>
+          ))}
           <Text size="sm" color="gray">
             {formatDate(group.lastMessage?.updatedAt)}
           </Text>

@@ -38,9 +38,7 @@ export const MessageList: React.FC = () => {
     <Box h="100%">
       <Box>
         {viewMessages?.length > 0 ? (
-          viewMessages?.map((item) => {
-            return <MessageCard message={item} />;
-          })
+          viewMessages?.map((item) => <MessageCard key={item.id} message={item} />)
         ) : (
           <Text fontSize="sm">メッセージがありません</Text>
         )}
