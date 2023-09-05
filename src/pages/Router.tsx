@@ -13,6 +13,8 @@ import { Home } from "pages/Home";
 import { TweetShow } from "pages/tweets/TweetShow";
 import { UserShow } from "pages/users/UserShow";
 import { NotificationShow } from "pages/notification/NotificationShow";
+import { GroupShow } from "pages/groups/GroupShow";
+import { MessageShow } from "pages/messages/MessageShow";
 
 export const Router: React.FC = () => {
   const { handleGetCurrentUser, isSignedIn } = useAuth();
@@ -40,6 +42,8 @@ export const Router: React.FC = () => {
           <Route path="tweets/:id" element={<TweetShow />} />
           <Route path="users/:id" element={<UserShow />} />
           <Route path="notification" element={<NotificationShow />} />
+          <Route path="messages" element={<GroupShow />} />
+          <Route path="messages/:id" element={<MessageShow />} />
         </Route>
 
         <Route element={<Layout />}>
