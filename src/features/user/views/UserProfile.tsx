@@ -4,6 +4,7 @@ import { UpdateUserForm } from "features/user/views/UpdateUserForm";
 import { MainAvatar } from "components/avatar/MainAvatar";
 import { MainButton } from "components/button/MainButton";
 import { FollowButton } from "features/user/views/FollowButton";
+import { GroupButton } from "features/user/views/GroupButton";
 import { formatDate } from "lib/functions/formatDate";
 import { ChildrenModal } from "components/modal/ChildrenModal";
 import { shortenString } from "lib/functions/shortenString";
@@ -55,7 +56,10 @@ export const UserProfile: React.FC<UserProfileProps> = ({ user, setRefetch, isMy
             プロフィールを編集
           </MainButton>
         ) : (
-          <FollowButton user={user} />
+          <HStack>
+            <GroupButton user={user} />
+            <FollowButton user={user} />
+          </HStack>
         )}
       </Box>
       <Stack spacing={2}>
