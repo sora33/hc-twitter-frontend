@@ -33,7 +33,7 @@ export const Sidebar: React.FC = () => {
     },
     {
       name: "メッセージ",
-      link: "/message",
+      link: "/messages",
       icon: <AiOutlineMail style={iconStyle} />,
     },
     {
