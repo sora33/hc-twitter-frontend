@@ -13,6 +13,7 @@ export interface Tweet {
     count: number;
     isFavorited: boolean;
   };
+  isBookmarked: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

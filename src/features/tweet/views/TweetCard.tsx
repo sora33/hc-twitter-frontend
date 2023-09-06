@@ -6,6 +6,7 @@ import { Tweet } from "features/tweet/tweetTypes";
 import { CommentButton } from "features/tweet/views/TweetCardButton/CommentButton";
 import { FavoriteButton } from "features/tweet/views/TweetCardButton/FavoriteButton";
 import { RetweetButton } from "features/tweet/views/TweetCardButton/RetweetButton";
+import { BookmarkButton } from "features/tweet/views/TweetCardButton/BookmarkButton";
 import { UserBase } from "features/user/userTypes";
 import { formatDate } from "lib/functions/formatDate";
 import { deleteTweet } from "features/tweet/tweetApis";
@@ -87,6 +88,7 @@ export const TweetCard: React.FC<TweetCardProps> = ({
           />
           <FavoriteButton tweet={tweet} />
           <RetweetButton tweet={tweet} />
+          <BookmarkButton tweet={tweet} />
         </HStack>
       </Stack>
     </Flex>

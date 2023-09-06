@@ -6,11 +6,12 @@ import {
   AiOutlineRetweet,
   AiFillHeart,
   AiFillMessage,
+  AiOutlineBook,
 } from "react-icons/ai";
 
 type TweetCardButtonProps = {
-  type: "favorite" | "comment" | "retweet";
-  children: ReactNode;
+  type: "favorite" | "comment" | "retweet" | "bookmark";
+  children?: ReactNode;
   isColor?: boolean;
 } & Omit<ButtonProps, "type" | "children">;
 
@@ -37,22 +38,38 @@ export const TweetCardButton: React.FC<TweetCardButtonProps> = ({
       IconComponentFilled = IconComponent;
       colorScheme = "green";
       break;
+    case "bookmark":
+      IconComponent = <AiOutlineBook />;
+      IconComponentFilled = IconComponent;
+      colorScheme = "orange";
+      break;
     default:
       throw new Error("Invalid type prop");
   }
 
   return (
     <>
-      <Button
-        leftIcon={isColor ? IconComponentFilled : IconComponent}
-        size="sm"
-        variant="ghost"
-        colorScheme={colorScheme}
-        color={isColor ? colorScheme : "gray.400"}
-        {...buttonProps}
-      >
-        {children}
-      </Button>
+      {children ? (
+        <Button
+          leftIcon={isColor ? IconComponentFilled : IconComponent}
+          size="sm"
+          variant="ghost"
+          colorScheme={colorScheme}
+          color={isColor ? colorScheme : "gray.400"}
+          {...buttonProps}
+        >
+          {children}
+        </Button>
+      ) : (
+        <Button
+          leftIcon={isColor ? IconComponentFilled : IconComponent}
+          size="sm"
+          variant="ghost"
+          colorScheme={colorScheme}
+          color={isColor ? colorScheme : "gray.400"}
+          {...buttonProps}
+        />
+      )}
     </>
   );
 };

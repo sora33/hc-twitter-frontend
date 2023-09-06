@@ -15,6 +15,7 @@ import { UserShow } from "pages/users/UserShow";
 import { NotificationShow } from "pages/notification/NotificationShow";
 import { GroupShow } from "pages/groups/GroupShow";
 import { MessageShow } from "pages/messages/MessageShow";
+import { BookmarkShow } from "pages/bookmark/BookmarkShow";
 
 export const Router: React.FC = () => {
   const { handleGetCurrentUser, isSignedIn } = useAuth();
@@ -44,6 +45,7 @@ export const Router: React.FC = () => {
           <Route path="notification" element={<NotificationShow />} />
           <Route path="messages" element={<GroupShow />} />
           <Route path="messages/:id" element={<MessageShow />} />
+          <Route path="bookmark" element={<BookmarkShow />} />
         </Route>
 
         <Route element={<Layout />}>
