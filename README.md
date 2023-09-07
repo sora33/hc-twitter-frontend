@@ -1,5 +1,4 @@
-## デプロイ方法
-##　確認できるURL
+## 確認できるURL
 https://sora33.github.io/hc_twitter_react_frontend/
 
 
