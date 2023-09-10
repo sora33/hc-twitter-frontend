@@ -1,6 +1,7 @@
 import { Stack, Box, useMediaQuery } from "@chakra-ui/react";
 import { MainButton } from "components/button/MainButton";
 import { useLocation } from "react-router-dom";
+import { UserDeleteButton } from "features/auth/views/UserDeleteButton";
 import {
   AiOutlineHome,
   AiOutlineBell,
@@ -76,6 +77,7 @@ export const Sidebar: React.FC = () => {
             {isLargerThanMd && item.name}
           </MainButton>
         ))}
+        <UserDeleteButton />
       </Stack>
     </Box>
   );

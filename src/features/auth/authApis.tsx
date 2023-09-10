@@ -68,3 +68,13 @@ export const getCurrentUser = async (): Promise<{ data: User }> => {
   // console.log("uid", localStorage.getItem("uid"));
   return res.data;
 };
+
+export const deleteCurrentUser = async () => {
+  try {
+    const res = await apiClient.delete("users");
+    return res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
